@@ -1,45 +1,81 @@
+const baseUrl = 'https://swapi.tech/api';
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			urlBase2: "https://www.swapi.tech/api",
+			characters: [],
+			planets: [],
+			vehicles: [],
+			favorites: []
 		},
+
+
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			deleteFav:  (id) => {
+				let newFav = getStore().favorites.filter((item) =>  item._id != id)
+					setStore({
+						favorites: newFav
+					})
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+
+			addFavorite: (fav)  => {
+				let exist = getStore().favorites.some((item) => item._id == fav._id)
+				if (!exist) {
+					setStore({
+						favorites: [...getStore().favorites, fav]
+					})
+				}else {
+					let newFav = getStore().favorites.filter((item) =>  item._id != fav._id)
+					setStore({
+						favorites: newFav
+					})
+				}
 			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+			getCharacters: async (page = 1, limit = 2) => {
+				const resp = await fetch(baseUrl + `/people?page=${page}&limit=${limit}`)
+				let data = await resp.json()
+				for (let item of data.results) {
+					fetch(item.url)
+						.then((response) => response.json())
+						.then((data) => {
+							setStore({
+								characters: [...getStore().characters, data.result]
+							})
+						})
+				}
 
-				//reset the global store
-				setStore({ demo: demo });
+			},
+
+			getPlanets: async (page = 1, limit = 2) => {
+				const resp = await fetch(baseUrl + `/planets?page=${page}&limit=${limit}`)
+				let data = await resp.json()
+				for (let item of data.results) {
+					fetch(item.url)
+						.then((response) => response.json())
+						.then((data) => {
+							setStore({
+								planets: [...getStore().planets, data.result]
+							})
+						})
+				}
+			},
+
+			getVehicles: async (page = 1, limit = 2) => {
+				const resp = await fetch(baseUrl + `/vehicles?page=${page}&limit=${limit}`)
+				let data = await resp.json()
+				for (let item of data.results) {
+					fetch(item.url)
+						.then((response) => response.json())
+						.then((data) => {
+							setStore({
+								vehicles: [...getStore().vehicles, data.result]
+							})
+						})
+				}
 			}
 		}
-	};
+	}
 };
 
-export default getState;
+export default getState
