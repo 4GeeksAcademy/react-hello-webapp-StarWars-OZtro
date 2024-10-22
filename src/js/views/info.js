@@ -26,7 +26,7 @@ useEffect(()=>{
     searchDetail(params.nature)
 },[store.characters, store.planets, store.vehicles])
 
-
+const imageUrl = `https://starwars-visualguide.com/assets/img/${params.nature}/${params.id}.jpg`;
     return (
         <>
             {
@@ -38,7 +38,7 @@ useEffect(()=>{
                         <div className="card mb-3 card-info" style={{ maxwidth: "540px" }}>
                             <div className="row g-0">
                                 <div className="col-md-4">
-                                    <img src="https://fastly.picsum.photos/id/100/800/600.jpg?hmac=upSsGynGKBAVtztsXDY-0kMq9YHC8KDApVB1QT9a99Q" className="img-fluid rounded-start" alt="..." />
+                                <img src={imageUrl} className="img-fluid rounded-start" alt={detail?.properties?.name} onError={(e) => { e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"; }} />
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body text-center">
@@ -89,7 +89,7 @@ useEffect(()=>{
                             <div className="card mb-3 card-info" style={{ maxwidth: "540px" }}>
                                 <div className="row g-0">
                                     <div className="col-md-4">
-                                        <img src="https://fastly.picsum.photos/id/100/800/600.jpg?hmac=upSsGynGKBAVtztsXDY-0kMq9YHC8KDApVB1QT9a99Q" className="img-fluid rounded-start" alt="..." />
+                                    <img src={imageUrl} className="img-fluid rounded-start" alt={detail?.properties?.name} onError={(e) => { e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"; }} />
                                     </div>
                                     <div className="col-md-8">
                                         <div className="card-body text-center">
@@ -140,7 +140,7 @@ useEffect(()=>{
                                 <div className="card mb-3 card-info" style={{ maxwidth: "540px" }}>
                                     <div className="row g-0">
                                         <div className="col-md-4">
-                                            <img src="https://fastly.picsum.photos/id/100/800/600.jpg?hmac=upSsGynGKBAVtztsXDY-0kMq9YHC8KDApVB1QT9a99Q" className="img-fluid rounded-start" alt="..." />
+                                        <img src={imageUrl} className="img-fluid rounded-start" alt={detail?.properties?.name} onError={(e) => { e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"; }} />
                                         </div>
                                         <div className="col-md-8">
                                             <div className="card-body text-center">

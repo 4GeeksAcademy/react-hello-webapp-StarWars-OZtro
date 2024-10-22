@@ -35,8 +35,8 @@ export default function Card({ title, body, id, type, people, uid }) {
 						<button type="button" className="btn btn-outline-primary">Learn more!</button>
 					</Link>
 
-					<button onClick={toggleFavorite} type="button" className="btn btn-outline-warning">
-						<i className={isFavorite ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i>
+					<button onClick={() => toggleFavorite()} type="button" className="btn btn-outline-warning">
+						<i className={store.favorites.some((item)=> item._id == people._id ) ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i>
 					</button>
 
 					
