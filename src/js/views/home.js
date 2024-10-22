@@ -26,7 +26,7 @@ const { store, actions } = useContext(Context)
 									<p>Eye color: {character.properties.eye_color}</p>
 								</div>
 							}
-                            id={character._id}
+                            id={character.uid}
                             type={"characters"}
                             key={character.uid}
 							people={character}
@@ -49,9 +49,10 @@ const { store, actions } = useContext(Context)
 								<p>Terrain: {planet.properties.terrain}</p>
 							</div>
 						}
-						id={planet._id}
+						id={planet.uid}
 						type={"planets"}
 						key={planet.uid}
+						people={planet}
 					/>)}
 					
 
@@ -69,9 +70,10 @@ const { store, actions } = useContext(Context)
 								<p>Passengers: {vehicle.properties.passengers}</p>
 							</div>
 						}
-						id={vehicle._id}
+						id={vehicle.uid}
 						type={"vehicles"}
 						key={vehicle.uid}
+						people={vehicle}
 					/>)}
 
 				</div>

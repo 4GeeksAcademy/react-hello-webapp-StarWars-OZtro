@@ -12,23 +12,25 @@ export const Info = () => {
         
         if(nature == "characters"){
            console.log("Aqui entramos") 
-            let result =  store.characters.find(item => item._id == params.id)
+            let result =  store.characters.find(item => item._uid == params.uid)
             setDetail(result)
         }else if(nature == "planets"){
-            let result =  store.planets.find(item => item._id == params.id)
+            let result =  store.planets.find(item => item._uid == params.uid)
             setDetail(result)
         }else {
-            let  result =  store.vehicles.find(item => item._id == params.id)
+            let  result =  store.vehicles.find(item => item._uid == params.uid)
             setDetail(result)
         }
     }
 useEffect(()=>{
     searchDetail(params.nature)
 },[store.characters, store.planets, store.vehicles])
+
+
     return (
         <>
             {
-                params.nature == "planets" ?
+                params.nature == "planets" ?   /// PLANETAS
                     <div className="container">
 
 
@@ -41,7 +43,7 @@ useEffect(()=>{
                                 <div className="col-md-8">
                                     <div className="card-body text-center">
                                         <h1 className="card-title">{detail?.properties?.name}</h1>
-                                        <p className="card-text">It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet. Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy.....</p>
+                                        <p className="card-text">{detail?.description}</p>
                                     </div>
                                 </div>
                             </div>
@@ -51,27 +53,27 @@ useEffect(()=>{
                             <div className="row mt-4 info-row text-danger">
                                 <div className="col-md-2 mt-4 text-center">
                                     <p>Name</p>
-                                    <spam>informacion</spam>
+                                    <spam>{detail?.properties?.name}</spam>
                                 </div>
                                 <div className="col-md-2 mt-4 text-center">
-                                    <p>Birth<br /> Year</p>
-                                    <spam>informacion</spam>
+                                    <p>Diameter</p>
+                                    <spam>{detail?.properties?.diameter}</spam>
                                 </div>
                                 <div className="col-md-2 mt-4 text-center">
-                                    <p>Gender</p>
-                                    <spam>informacion</spam>
+                                    <p>Climate</p>
+                                    <spam>{detail?.properties?.climate}</spam>
                                 </div>
                                 <div className="col-md-2 mt-4 text-center">
-                                    <p>Height</p>
-                                    <spam>informacion</spam>
+                                    <p>Gravity</p>
+                                    <spam>{detail?.properties?.gravity}</spam>
                                 </div>
                                 <div className="col-md-2 mt-4 text-center">
-                                    <p>Skin<br /> Color</p>
-                                    <spam>informacion</spam>
+                                    <p>Terrain</p>
+                                    <spam>{detail?.properties?.terrain}</spam>
                                 </div>
                                 <div className="col-md-2 mt-4 text-center">
-                                    <p>Eye<br /> Color</p>
-                                    <spam>informacion</spam>
+                                    <p>Surface<br /> Water</p>
+                                    <spam>{detail?.properties?.surface_water}</spam>
                                 </div>
 
                             </div>
@@ -79,7 +81,7 @@ useEffect(()=>{
                         </div>
 
                     </div> :
-                    params.nature == "characters" ?
+                    params.nature == "characters" ?   /// PERSONAJES
                         <div className="container">
 
 
@@ -106,23 +108,23 @@ useEffect(()=>{
                                     </div>
                                     <div className="col-md-2 mt-4 text-center">
                                         <p>Birth<br /> Year</p>
-                                        <spam>informacion</spam>
+                                        <spam>{detail?.properties?.birth_year}</spam>
                                     </div>
                                     <div className="col-md-2 mt-4 text-center">
                                         <p>Gender</p>
-                                        <spam>informacion</spam>
+                                        <spam>{detail?.properties?.gender}</spam>
                                     </div>
                                     <div className="col-md-2 mt-4 text-center">
                                         <p>Height</p>
-                                        <spam>informacion</spam>
+                                        <spam>{detail?.properties?.height}</spam>
                                     </div>
                                     <div className="col-md-2 mt-4 text-center">
                                         <p>Skin<br /> Color</p>
-                                        <spam>informacion</spam>
+                                        <spam>{detail?.properties?.skin_color}</spam>
                                     </div>
                                     <div className="col-md-2 mt-4 text-center">
                                         <p>Eye<br /> Color</p>
-                                        <spam>informacion</spam>
+                                        <spam>{detail?.properties?.eye_color}</spam>
                                     </div>
 
                                 </div>
@@ -130,7 +132,7 @@ useEffect(()=>{
                             </div>
 
                         </div> :
-                        params.nature == "vehicles" ?
+                        params.nature == "vehicles" ?    /// VEHICULOS
                             <div className="container">
 
 
@@ -143,7 +145,7 @@ useEffect(()=>{
                                         <div className="col-md-8">
                                             <div className="card-body text-center">
                                                 <h1 className="card-title">{detail?.properties?.name}</h1>
-                                                <p className="card-text">It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet. Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy.....</p>
+                                                <p className="card-text">{detail?.description}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -152,28 +154,28 @@ useEffect(()=>{
                                 <div className="container">
                                     <div className="row mt-4 info-row text-danger">
                                         <div className="col-md-2 mt-4 text-center">
-                                            <p>Name</p>
-                                            <spam>informacion</spam>
+                                            <p>Model</p>
+                                            <spam>{detail?.properties?.model}</spam>
                                         </div>
                                         <div className="col-md-2 mt-4 text-center">
-                                            <p>Birth<br /> Year</p>
-                                            <spam>informacion</spam>
+                                            <p>Manufacturer</p>
+                                            <spam>{detail?.properties?.manufacturer}</spam>
                                         </div>
                                         <div className="col-md-2 mt-4 text-center">
-                                            <p>Gender</p>
-                                            <spam>informacion</spam>
+                                            <p>Crew</p>
+                                            <spam>{detail?.properties?.crew}</spam>
                                         </div>
                                         <div className="col-md-2 mt-4 text-center">
-                                            <p>Height</p>
-                                            <spam>informacion</spam>
+                                            <p>Consumables</p>
+                                            <spam>{detail?.properties?.consumables}</spam>
                                         </div>
                                         <div className="col-md-2 mt-4 text-center">
-                                            <p>Skin<br /> Color</p>
-                                            <spam>informacion</spam>
+                                            <p>Max Atmosphering<br /> Speed</p>
+                                            <spam>{detail?.properties?.max_atmosphering_speed}</spam>
                                         </div>
                                         <div className="col-md-2 mt-4 text-center">
-                                            <p>Eye<br /> Color</p>
-                                            <spam>informacion</spam>
+                                            <p>Cost in<br /> Credits</p>
+                                            <spam>{detail?.properties?.cost_in_credits}</spam>
                                         </div>
 
                                     </div>

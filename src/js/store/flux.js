@@ -2,7 +2,6 @@ const baseUrl = 'https://swapi.tech/api';
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			urlBase2: "https://www.swapi.tech/api",
 			characters: [],
 			planets: [],
 			vehicles: [],
