@@ -31,7 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getCharacters: async (page = 1, limit = 2) => {
+			getCharacters: async (page = 1, limit = 10) => {
 				const resp = await fetch(baseUrl + `/people?page=${page}&limit=${limit}`)
 				let data = await resp.json()
 				for (let item of data.results) {
@@ -46,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			getPlanets: async (page = 1, limit = 2) => {
+			getPlanets: async (page = 1, limit = 10) => {
 				const resp = await fetch(baseUrl + `/planets?page=${page}&limit=${limit}`)
 				let data = await resp.json()
 				for (let item of data.results) {
@@ -60,7 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getVehicles: async (page = 1, limit = 2) => {
+			getVehicles: async (page = 1, limit = 10) => {
 				const resp = await fetch(baseUrl + `/vehicles?page=${page}&limit=${limit}`)
 				let data = await resp.json()
 				for (let item of data.results) {
