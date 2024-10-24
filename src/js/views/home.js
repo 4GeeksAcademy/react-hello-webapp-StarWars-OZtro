@@ -18,7 +18,7 @@ const { store, actions } = useContext(Context)
 
 				{store.characters.map(character => (
                         <Card  
-                            title={character.name}
+                            title={character.properties.name}
 							body={
 								<div>
 									<p>Gender: {character.properties.gender}</p>
@@ -42,7 +42,7 @@ const { store, actions } = useContext(Context)
 				<div className="d-flex carrouselPla">
 
 				 {store.planets.map(planet => <Card
-						title={planet.name}
+						title={planet.properties.name}
 						body={
 							<div>
 								<p>Population: {planet.properties.population}</p>
@@ -63,7 +63,7 @@ const { store, actions } = useContext(Context)
 				<div className="d-flex carrouselVeh">
 
 				 {store.vehicles.map(vehicle => <Card
-						title={vehicle.name}
+						title={vehicle.properties.name}
 						body={
 							<div>
 								<p>Cargo capacity: {vehicle.properties.cargo_capacity}</p>

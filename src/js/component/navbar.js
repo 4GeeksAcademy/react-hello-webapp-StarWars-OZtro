@@ -21,7 +21,7 @@ export const Navbar = () => {
 
 					<div className="dropdown">
 						<button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-							Favorites {store.favorites.length}
+							Favorites <spam className="bg-secondary px-2 rounded">{store.favorites.length}</spam>
 						</button>
 
 						<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -30,10 +30,10 @@ export const Navbar = () => {
 							) : (
 								store.favorites.map((item) => {
 									return (
-										<li key={item._id} className="d-flex justify-content-between align-items-center">
-											<span onClick={() => actions.deleteFav(item._id)}>{item.properties.name}</span>
+										<li key={item._id} className="d-flex justify-content-between align-items-center px-2">
+											<span  onClick={() => actions.deleteFav(item._id)}>{item.properties.name}</span>
 											<button onClick={() => actions.deleteFav(item._id)} className="btn btn-link">
-												<i className="fa-solid fa-trash"></i>
+												<i className="fa-solid fa-trash text-dark"></i>
 											</button>
 										</li>
 									);
